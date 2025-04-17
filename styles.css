@@ -1,0 +1,453 @@
+/* ---------- Base Styles ---------- */
+        :root {
+            /* Core Colors */
+            --primary-color: #4bc17e;
+            --secondary-color: #6979f8;
+            --background-color: #f7f9fc;
+            --card-color: #ffffff;
+            --text-primary: #2d3142;
+            --text-secondary: #8a94a6;
+
+            /* Category Colors */
+            --category-1: #4bc17e;
+            --category-2: #ffa26b;
+            --category-3: #7e84f9;
+            --category-4: #ff7eb6;
+            --category-5: #53d0ec;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            /* Removed body padding for app-like feel */
+            line-height: 1.5;
+        }
+
+        /* ---------- Status Bar ---------- */
+        .status-bar {
+            height: 44px; /* Approximate iOS status bar height */
+            background-color: var(--background-color);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 14px;
+            color: var(--text-primary);
+            position: sticky; /* Keep status bar visible */
+            top: 0;
+            z-index: 100;
+        }
+
+        .status-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ---------- Headers ---------- */
+        .header {
+            background-color: var(--background-color);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            width: 100%;
+            position: sticky; /* Keep header visible */
+            top: 44px; /* Below status bar */
+            z-index: 99;
+            border-bottom: 1px solid rgba(0,0,0,0.05); /* Subtle separator */
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: 600;
+            position: absolute; /* Center title */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .header-icon { /* Generic class for left/right icons */
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn {
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(75, 193, 126, 0.3);
+        }
+
+        .btn-primary:active {
+            box-shadow: 0 2px 6px rgba(75, 193, 126, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(105, 121, 248, 0.3);
+        }
+
+        .btn-secondary:active {
+            box-shadow: 0 2px 6px rgba(105, 121, 248, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+
+        .btn-lg {
+            padding: 14px 28px;
+            font-size: 16px;
+        }
+
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: var(--radius-md);
+        }
+
+        .btn-icon-sm {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ---------- FAB ---------- */
+        .fab {
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(75, 193, 126, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: fixed; /* Keep FAB in place */
+            bottom: 24px;
+            right: 24px;
+            z-index: 90;
+        }
+
+        .fab:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(75, 193, 126, 0.3);
+        }
+
+        /* ---------- Cards ---------- */
+        .card {
+            background-color: var(--card-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-md); /* Add margin between cards */
+        }
+
+        /* Action Card */
+        .action-card {
+            background-color: var(--primary-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            color: white;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: var(--space-lg); /* Spacing below action card */
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .action-card:active {
+            transform: scale(0.99);
+        }
+
+        .action-card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0; /* Prevent icon shrinking */
+        }
+
+        .action-card-content {
+            flex: 1;
+        }
+
+        .action-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .action-card-description {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Category Card */
+        .category-card {
+            background-color: var(--card-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 140px; /* Fixed width */
+            flex-shrink: 0; /* Prevent shrinking in flex container */
+            cursor: pointer;
+        }
+
+        .category-card:active {
+            transform: scale(0.98);
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .category-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary); /* Ensure text color */
+        }
+
+        .icon-1 { background-color: rgba(75, 193, 126, 0.12); color: var(--category-1); }
+        .icon-2 { background-color: rgba(255, 162, 107, 0.12); color: var(--category-2); }
+        .icon-3 { background-color: rgba(126, 132, 249, 0.12); color: var(--category-3); }
+        .icon-4 { background-color: rgba(255, 126, 182, 0.12); color: var(--category-4); }
+        .icon-5 { background-color: rgba(83, 208, 236, 0.12); color: var(--category-5); }
+
+        /* Record Item Card */
+        .record-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid rgba(138, 148, 166, 0.1);
+            width: 100%;
+            background-color: var(--card-color); /* Ensure background */
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .record-item:hover {
+             background-color: rgba(0,0,0,0.02); /* Subtle hover */
+        }
+
+        .record-item:last-child {
+            border-bottom: none;
+            border-bottom-left-radius: var(--radius-lg); /* Match card radius */
+            border-bottom-right-radius: var(--radius-lg);
+        }
+        .record-item:first-child {
+            border-top-left-radius: var(--radius-lg); /* Match card radius */
+            border-top-right-radius: var(--radius-lg);
+        }
+
+
+        .record-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .record-info {
+            flex: 1;
+            min-width: 0; /* Prevent overflow issues */
+        }
+
+        .record-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            white-space: nowrap; /* Prevent wrapping */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .record-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .record-value { /* Optional: For displaying a value on the right */
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 16px; /* Space from info */
+            color: var(--text-secondary);
+        }
+
+        /* ---------- Typography ---------- */
+        .text-display {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .text-h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .text-h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .text-h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .text-h4 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .text-body-lg {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .text-body {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .text-body-sm {
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .text-caption {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.4px;
+        }
+
+        /* Material Icons */
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+        /* Utility */
+        .horizontal-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 8px; /* Space for scrollbar */
+            /* Hide scrollbar visually */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }

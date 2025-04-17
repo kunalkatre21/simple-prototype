@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Medical Records</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Status Bar (Placeholder) -->
+    <div class="status-bar">
+        <span>9:41 AM</span>
+        <div class="status-bar-right">
+            <i class="material-icons" style="font-size: 18px;">signal_cellular_alt</i>
+            <i class="material-icons" style="font-size: 18px;">wifi</i>
+            <i class="material-icons" style="font-size: 18px;">battery_full</i>
+        </div>
+    </div>
+
+    <!-- App Header -->
+    <div class="header">
+        <div class="header-icon">
+            <i class="material-icons">menu</i>
+        </div>
+        <!-- No title needed for home -->
+        <div class="avatar">J</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div style="padding: 16px;">
+
+        <!-- Welcome Section -->
+        <h3 class="text-h3" style="margin-bottom: 24px;">Welcome Back!</h3>
+
+        <!-- Action Card -->
+        <div class="action-card" onclick="location.href='#'"> <!-- Link placeholder -->
+            <div class="action-card-icon">
+                <i class="material-icons" style="font-size: 32px;">add_chart</i>
+            </div>
+            <div class="action-card-content">
+                <div class="action-card-title">View Health Summary</div>
+                <div class="action-card-description">Check your latest overview</div>
+            </div>
+            <i class="material-icons" style="opacity: 0.7;">chevron_right</i>
+        </div>
+
+        <!-- Categories Section -->
+        <h4 class="text-h4" style="margin-top: 32px; margin-bottom: 16px;">Categories</h4>
+        <div class="horizontal-scroll">
+            <div class="category-card" onclick="location.href='#'"> <!-- Link placeholder -->
+                <div class="category-icon icon-1">
+                    <i class="material-icons">medication</i>
+                </div>
+                <span class="category-name">Prescriptions</span>
+            </div>
+            <div class="category-card" onclick="location.href='#'"> <!-- Link placeholder -->
+                <div class="category-icon icon-2">
+                    <i class="material-icons">science</i>
+                </div>
+                <span class="category-name">Lab Results</span>
+            </div>
+            <div class="category-card" onclick="location.href='#'"> <!-- Link placeholder -->
+                <div class="category-icon icon-3">
+                    <i class="material-icons">event</i>
+                </div>
+                <span class="category-name">Appointments</span>
+            </div>
+             <div class="category-card" onclick="location.href='#'"> <!-- Link placeholder -->
+                <div class="category-icon icon-4">
+                    <i class="material-icons">receipt_long</i>
+                </div>
+                <span class="category-name">Billing</span>
+            </div>
+             <div class="category-card" onclick="location.href='#'"> <!-- Link placeholder -->
+                <div class="category-icon icon-5">
+                    <i class="material-icons">vaccines</i>
+                </div>
+                <span class="category-name">Vaccines</span>
+            </div>
+        </div>
+
+        <!-- Recent Records Section -->
+        <h4 class="text-h4" style="margin-top: 32px; margin-bottom: 16px;">Recent Records</h4>
+        <div class="card">
+            <div class="record-item" onclick="location.href='details.html'">
+                <div class="record-icon icon-1">
+                    <i class="material-icons">medication</i>
+                </div>
+                <div class="record-info">
+                    <div class="record-title">Pain Medication Refill</div>
+                    <div class="record-date">Apr 15, 2025</div>
+                </div>
+                <i class="material-icons" style="color: var(--text-secondary);">chevron_right</i>
+            </div>
+            <div class="record-item" onclick="location.href='details.html'">
+                <div class="record-icon icon-2">
+                    <i class="material-icons">science</i>
+                </div>
+                <div class="record-info">
+                    <div class="record-title">Blood Test Results</div>
+                    <div class="record-date">Apr 14, 2025</div>
+                </div>
+                 <i class="material-icons" style="color: var(--text-secondary);">chevron_right</i>
+            </div>
+            <div class="record-item" onclick="location.href='details.html'">
+                <div class="record-icon icon-5"> <!-- Using icon-5 for vaccines -->
+                    <i class="material-icons">vaccines</i>
+                </div>
+                <div class="record-info">
+                    <div class="record-title">Flu Shot Record</div>
+                    <div class="record-date">Apr 10, 2025</div>
+                </div>
+                 <i class="material-icons" style="color: var(--text-secondary);">chevron_right</i>
+            </div>
+        </div>
+
+    </div> <!-- End Main Content Area -->
+
+</body>
+</html>

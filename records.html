@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records - Medical App</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <template id="record-item-template">
+        <div class="record-item" onclick="location.href='details.html'">
+            <div class="record-icon"> <!-- Placeholder for icon class -->
+                <i class="material-icons"></i> <!-- Placeholder for icon name -->
+            </div>
+            <div class="record-info">
+                <div class="record-title"></div> <!-- Placeholder for title -->
+                <div class="record-date"></div> <!-- Placeholder for date -->
+            </div>
+            <div class="record-value"></div> <!-- Placeholder for value -->
+        </div>
+    </template>
+    <template id="search-component-template">
+        <div class="search-bar">
+            <span class="material-icons search-icon">search</span>
+            <input type="text" class="search-input" placeholder="Search...">
+        </div>
+    </template>
+
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span>9:41 AM</span>
+        <div class="status-bar-right">
+            <i class="material-icons" style="font-size: 16px;">signal_cellular_alt</i>
+            <i class="material-icons" style="font-size: 16px;">wifi</i>
+            <i class="material-icons" style="font-size: 16px;">battery_full</i>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="back-button" onclick="location.href='index.html'">
+            <i class="material-icons">arrow_back</i>
+        </div>
+        <div class="header-title">Records</div>
+        <div class="avatar">J</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div style="padding: 16px;">
+
+        <!-- Search bar will be inserted here by JavaScript -->
+        <div id="search-bar-container"></div> <!-- Container for the search component -->
+
+        <!-- Records List Card -->
+        <div class="card" id="records-list">
+            <!-- Record items will be dynamically inserted here by JavaScript -->
+
+        </div> <!-- End Card -->
+
+    </div> <!-- End Main Content Area -->
+
+    <script src="components.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const recordsListContainer = document.getElementById('records-list');
+            const searchBarContainer = document.getElementById('search-bar-container'); // Get the container
+
+            // Create and append the search component
+            if (searchBarContainer && typeof createSearchComponent === 'function') { // Use && directly here
+                const searchComponent = createSearchComponent();
+                searchBarContainer.appendChild(searchComponent);
+            } else {
+                console.error("Could not find search bar container or createSearchComponent function.");
+            }
+
+            // Sample data (based on previous static HTML)
+            const recordsData = [
+                { iconClass: 'icon-1', iconName: 'medication', title: 'Prescription: Lisinopril', date: 'Apr 15, 2025', value: '10mg' },
+                { iconClass: 'icon-2', iconName: 'science', title: 'Lab Results: Blood Panel', date: 'Apr 10, 2025', value: 'View' },
+                { iconClass: 'icon-3', iconName: 'vaccines', title: 'Vaccination: Flu Shot', date: 'Oct 22, 2024', value: 'Completed' },
+                { iconClass: 'icon-4', iconName: 'description', title: 'Doctor\'s Note: Annual Checkup', date: 'Mar 05, 2025', value: 'Dr. Smith' },
+                { iconClass: 'icon-5', iconName: 'image', title: 'Imaging: Chest X-Ray', date: 'Feb 18, 2025', value: 'View Scan' },
+                { iconClass: 'icon-2', iconName: 'healing', title: 'Allergy: Penicillin', date: 'Updated Jan 02, 2024', value: 'Severe' },
+                { iconClass: 'icon-3', iconName: 'medical_services', title: 'Procedure: Colonoscopy', date: 'Dec 11, 2023', value: 'Normal' }
+            ];
+
+            // Populate the list
+            recordsData.forEach(record => {
+                const recordElement = createRecordItem(
+                    record.iconClass,
+                    record.iconName,
+                    record.title,
+                    record.date,
+                    record.value
+                );
+                recordsListContainer.appendChild(recordElement);
+            });
+        });
+    </script>
+
+</body>
+</html>

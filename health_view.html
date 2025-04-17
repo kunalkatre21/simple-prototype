@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health View</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mobile-frame">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span>9:41</span>
+            <div class="status-bar-right">
+                <i class="material-icons" style="font-size: 18px;">signal_cellular_alt</i>
+                <i class="material-icons" style="font-size: 18px;">wifi</i>
+                <i class="material-icons" style="font-size: 18px;">battery_full</i>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <a href="index.html" class="back-button">
+                <i class="material-icons">arrow_back</i>
+            </a>
+            <span class="header-title">Health View</span>
+            <div class="avatar">J</div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content" style="padding: 16px;">
+            
+            <!-- Summary Heading -->
+            <h3 class="text-h3" style="margin-bottom: var(--space-md);">Your Health Overview</h3>
+
+            <!-- Chart Card -->
+            <div class="chart-card">
+                <h4 class="text-h4" style="margin-bottom: var(--space-sm);">Record Types Distribution</h4>
+                <div class="chart-container">
+                    <div class="donut-chart"></div>
+                    <div class="donut-hole">
+                        <span class="donut-total">25</span>
+                        <span class="donut-label">Total Records</span>
+                    </div>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--category-1);"></span>
+                        <span class="legend-text">Prescriptions</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--category-2);"></span>
+                        <span class="legend-text">Labs</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--category-3);"></span>
+                        <span class="legend-text">Visits</span>
+                    </div>
+                     <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--category-4);"></span>
+                        <span class="legend-text">Notes</span>
+                    </div>
+                     <div class="legend-item">
+                        <span class="legend-color" style="background-color: var(--category-5);"></span>
+                        <span class="legend-text">Imaging</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Metric Cards -->
+            <div class="card" style="padding: 16px;">
+                <p class="text-body"><strong>Last Checkup:</strong> Jan 10, 2025</p>
+            </div>
+
+            <div class="card" style="padding: 16px;">
+                <p class="text-body"><strong>Upcoming Appointments:</strong> 2</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

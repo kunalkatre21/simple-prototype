@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span>9:41 AM</span>
+        <div class="status-bar-right">
+            <i class="material-icons" style="font-size: 18px;">signal_cellular_alt</i>
+            <i class="material-icons" style="font-size: 18px;">wifi</i>
+            <i class="material-icons" style="font-size: 18px;">battery_full</i>
+        </div>
+    </div>
+
+    <!-- App Header -->
+    <div class="header">
+        <div class="back-button" onclick="location.href='records.html'">
+            <i class="material-icons">arrow_back</i>
+        </div>
+        <div class="header-title">Record Details</div>
+        <div class="header-action">
+             <button class="btn btn-secondary btn-icon btn-icon-sm" style="box-shadow: none; background: transparent; color: var(--text-primary);">
+                <i class="material-icons" style="font-size: 20px;">share</i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div style="padding: 16px;">
+        <div class="card">
+            <div class="detail-item">
+                <div class="detail-label">Record</div>
+                <h3 class="text-h3" style="margin-bottom: 4px;">Amoxicillin 500mg</h3>
+                <span class="text-body" style="color: var(--text-secondary);">Prescription</span>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Date Recorded</div>
+                <p class="text-caption">April 15, 2025</p>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Prescribed By</div>
+                <p class="text-body">Dr. Anya Sharma</p>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Dosage</div>
+                <p class="text-body">Take one capsule (500mg) twice daily for 7 days.</p>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Notes</div>
+                <p class="text-body-sm">Take with food to minimize stomach upset. Complete the full course even if you feel better.</p>
+            </div>
+        </div>
+
+         <!-- Example for Lab Result -->
+         <div class="card">
+            <div class="detail-item">
+                <div class="detail-label">Record</div>
+                <h3 class="text-h3" style="margin-bottom: 4px;">Complete Blood Count (CBC)</h3>
+                <span class="text-body" style="color: var(--text-secondary);">Lab Result</span>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Date Recorded</div>
+                <p class="text-caption">April 10, 2025</p>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Facility</div>
+                <p class="text-body">City Diagnostics Lab</p>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Key Results</div>
+                <p class="text-body" style="margin-bottom: 2px;"><span style="font-weight: 600;">Hemoglobin:</span> 14.5 g/dL</p>
+                <p class="text-body" style="margin-bottom: 2px;"><span style="font-weight: 600;">WBC Count:</span> 7.2 x 10^9/L</p>
+                <p class="text-body"><span style="font-weight: 600;">Platelets:</span> 250 x 10^9/L</p>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Notes</div>
+                <p class="text-body-sm">All values within normal reference ranges.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

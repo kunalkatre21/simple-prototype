@@ -1,0 +1,1231 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records Component Library</title>
+    <style>
+        /* ---------- Base Styles ---------- */
+        :root {
+            /* Core Colors */
+            --primary-color: #4bc17e;
+            --secondary-color: #6979f8;
+            --background-color: #f7f9fc;
+            --card-color: #ffffff;
+            --text-primary: #2d3142;
+            --text-secondary: #8a94a6;
+            
+            /* Category Colors */
+            --category-1: #4bc17e;
+            --category-2: #ffa26b;
+            --category-3: #7e84f9;
+            --category-4: #ff7eb6;
+            --category-5: #53d0ec;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.1);
+            
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            padding: 24px;
+            line-height: 1.5;
+        }
+        
+        /* Component Library Container */
+        .library-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .library-section {
+            margin-bottom: 60px;
+        }
+        
+        .library-heading {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .library-subheading {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 30px 0 16px;
+        }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .component-container {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .component-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        .component-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .component-display {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: var(--background-color);
+            border-radius: var(--radius-md);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .code-block {
+            background-color: #2d3142;
+            color: white;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            font-family: monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        /* ---------- Typography ---------- */
+        .text-display {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .text-h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .text-h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .text-h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .text-h4 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .text-body-lg {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        .text-body {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .text-body-sm {
+            font-size: 12px;
+            font-weight: 400;
+        }
+        
+        .text-caption {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.4px;
+        }
+        
+        /* ---------- Colors ---------- */
+        .color-swatch {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--radius-md);
+            margin-bottom: 8px;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 24px;
+        }
+        
+        .color-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .color-name {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+        
+        .color-value {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+        
+        /* ---------- Status Bar ---------- */
+        .status-bar {
+            height: 44px;
+            background-color: var(--background-color);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        .status-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* ---------- Headers ---------- */
+        .header {
+            background-color: var(--background-color);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            width: 100%;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .back-button {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background-color: var(--card-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* ---------- Buttons ---------- */
+        .btn {
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(75, 193, 126, 0.3);
+        }
+        
+        .btn-primary:active {
+            box-shadow: 0 2px 6px rgba(75, 193, 126, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(105, 121, 248, 0.3);
+        }
+        
+        .btn-secondary:active {
+            box-shadow: 0 2px 6px rgba(105, 121, 248, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+        
+        .btn-lg {
+            padding: 14px 28px;
+            font-size: 16px;
+        }
+        
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: var(--radius-md);
+        }
+        
+        .btn-icon-sm {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border-radius: var(--radius-sm);
+        }
+        
+        /* ---------- FAB ---------- */
+        .fab {
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(75, 193, 126, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .fab:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(75, 193, 126, 0.3);
+        }
+        
+        /* ---------- Cards ---------- */
+        .card {
+            background-color: var(--card-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Action Card */
+        .action-card {
+            background-color: var(--primary-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            color: white;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .action-card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+        }
+        
+        .action-card-content {
+            flex: 1;
+        }
+        
+        .action-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .action-card-description {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Category Card */
+        .category-card {
+            background-color: var(--card-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 140px;
+        }
+        
+        .category-card:active {
+            transform: scale(0.98);
+        }
+        
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .category-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .icon-1 { background-color: rgba(75, 193, 126, 0.12); color: var(--category-1); }
+        .icon-2 { background-color: rgba(255, 162, 107, 0.12); color: var(--category-2); }
+        .icon-3 { background-color: rgba(126, 132, 249, 0.12); color: var(--category-3); }
+        .icon-4 { background-color: rgba(255, 126, 182, 0.12); color: var(--category-4); }
+        .icon-5 { background-color: rgba(83, 208, 236, 0.12); color: var(--category-5); }
+        
+        /* Record Item Card */
+        .record-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid rgba(138, 148, 166, 0.1);
+            width: 100%;
+        }
+        
+        .record-item:last-child {
+            border-bottom: none;
+        }
+        
+        .record-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .record-info {
+            flex: 1;
+        }
+        
+        .record-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        
+        .record-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .record-value {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Chart Card */
+        .chart-card {
+            background-color: var(--card-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+            width: 100%;
+        }
+        
+        .chart-container {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 20px auto;
+        }
+        
+        .donut-chart {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--category-1) 0% 20%,
+                var(--category-2) 20% 35%,
+                var(--category-3) 35% 60%,
+                var(--category-4) 60% 80%,
+                var(--category-5) 80% 100%
+            );
+            position: relative;
+        }
+        
+        .donut-hole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background-color: var(--card-color);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .donut-total {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .donut-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 12px;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            margin-right: 6px;
+        }
+        
+        .legend-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        /* ---------- Forms ---------- */
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(138, 148, 166, 0.2);
+            background-color: var(--card-color);
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(138, 148, 166, 0.2);
+            background-color: var(--card-color);
+            font-size: 14px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238a94a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+        }
+        
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-checkbox input {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            accent-color: var(--primary-color);
+        }
+        
+        /* Search bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--card-color);
+            border-radius: var(--radius-full);
+            padding: 8px 16px;
+            width: 100%;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .search-bar i {
+            margin-right: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .search-bar input {
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            flex: 1;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+        }
+        
+        /* ---------- Background Shapes ---------- */
+        .bg-demo {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: var(--background-color);
+            border-radius: var(--radius-md);
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            background-color: var(--secondary-color);
+        }
+        
+        .shape-1 {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        /* Material Icons */
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="library-container">
+        <h1 class="library-heading">Medical Records App Component Library</h1>
+        
+        <!-- Colors Section -->
+        <section class="library-section">
+            <h2 class="library-subheading">Colors</h2>
+            <div class="component-container">
+                <h3 class="component-title">Primary Colors</h3>
+                <div class="color-grid">
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--primary-color);"></div>
+                        <div class="color-name">Primary</div>
+                        <div class="color-value">#4bc17e</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--secondary-color);"></div>
+                        <div class="color-name">Secondary</div>
+                        <div class="color-value">#6979f8</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--background-color);"></div>
+                        <div class="color-name">Background</div>
+                        <div class="color-value">#f7f9fc</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--card-color);"></div>
+                        <div class="color-name">Card</div>
+                        <div class="color-value">#ffffff</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--text-primary);"></div>
+                        <div class="color-name">Text Primary</div>
+                        <div class="color-value">#2d3142</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--text-secondary);"></div>
+                        <div class="color-name">Text Secondary</div>
+                        <div class="color-value">#8a94a6</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="component-container" style="margin-top: 20px;">
+                <h3 class="component-title">Category Colors</h3>
+                <div class="color-grid">
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--category-1);"></div>
+                        <div class="color-name">Category 1</div>
+                        <div class="color-value">#4bc17e</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--category-2);"></div>
+                        <div class="color-name">Category 2</div>
+                        <div class="color-value">#ffa26b</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--category-3);"></div>
+                        <div class="color-name">Category 3</div>
+                        <div class="color-value">#7e84f9</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--category-4);"></div>
+                        <div class="color-name">Category 4</div>
+                        <div class="color-value">#ff7eb6</div>
+                    </div>
+                    <div class="color-item">
+                        <div class="color-swatch" style="background-color: var(--category-5);"></div>
+                        <div class="color-name">Category 5</div>
+                        <div class="color-value">#53d0ec</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Typography Section -->
+        <section class="library-section">
+            <h2 class="library-subheading">Typography</h2>
+            <div class="component-container">
+                <h3 class="component-title">Text Styles</h3>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                        <div class="text-display">Display Text</div>
+                        <div class="text-caption">32px / 700 weight / -0.5px letter-spacing</div>
+                    </div>
+                    <div>
+                        <div class="text-h1">Heading 1</div>
+                        <div class="text-caption">28px / 700 weight</div>
+                    </div>
+                    <div>
+                        <div class="text-h2">Heading 2</div>
+                        <div class="text-caption">24px / 600 weight</div>
+                    </div>
+                    <div>
+                        <div class="text-h3">Heading 3</div>
+                        <div class="text-caption">20px / 600 weight</div>
+                    </div>
+                    <div>
+                        <div class="text-h4">Heading 4</div>
+                        <div class="text-caption">18px / 600 weight</div>
+                    </div>
+                    <div>
+                        <div class="text-body-lg">Body Large</div>
+                        <div class="text-caption">16px / 400 weight</div>
+                    </div>
+                    <div>
+                        <div class="text-body">Body</div>
+                        <div class="text-caption">14px / 400 weight</div>
+                    </div>
+                    <div>
+                        <div class="text-body-sm">Body Small</div>
+                        <div class="text-caption">12px / 400 weight</div>
+                    </div>
+                    <div>
+                        <div class="text-caption">Caption</div>
+                        <div class="text-caption">11px / 400 weight / 0.4px letter-spacing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Buttons Section -->
+        <section class="library-section">
+            <h2 class="library-subheading">Buttons</h2>
+            <div class="component-grid">
+                <div class="component-container">
+                    <h3 class="component-title">Primary Button</h3>
+                    <div class="component-description">Used for main actions and CTA elements</div>
+                    <div class="component-display">
+                        <button class="btn btn-primary">Primary Button</button>
+                    </div>
+                    <div class="code-block">&lt;button class="btn btn-primary"&gt;Primary Button&lt;/button&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Secondary Button</h3>
+                    <div class="component-description">Used for secondary actions</div>
+                    <div class="component-display">
+                        <button class="btn btn-secondary">Secondary Button</button>
+                    </div>
+                    <div class="code-block">&lt;button class="btn btn-secondary"&gt;Secondary Button&lt;/button&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Outline Button</h3>
+                    <div class="component-description">Low emphasis button for optional actions</div>
+                    <div class="component-display">
+                        <button class="btn btn-outline">Outline Button</button>
+                    </div>
+                    <div class="code-block">&lt;button class="btn btn-outline"&gt;Outline Button&lt;/button&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Button with Icon</h3>
+                    <div class="component-description">Button with leading icon for visual emphasis</div>
+                    <div class="component-display">
+                        <button class="btn btn-primary">
+                            <span class="material-icons">add</span>
+                            Add Record
+                        </button>
+                    </div>
+                    <div class="code-block">&lt;button class="btn btn-primary"&gt;
+    &lt;span class="material-icons"&gt;add&lt;/span&gt;
+    Add Record
+&lt;/button&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Icon Button</h3>
+                    <div class="component-description">Square button with icon only</div>
+                    <div class="component-display" style="display: flex; gap: 16px;">
+                        <button class="btn btn-primary btn-icon">
+                            <span class="material-icons">edit</span>
+                        </button>
+                        <button class="btn btn-secondary btn-icon">
+                            <span class="material-icons">share</span>
+                        </button>
+                    </div>
+                    <div class="code-block">&lt;button class="btn btn-primary btn-icon"&gt;
+    &lt;span class="material-icons"&gt;edit&lt;/span&gt;
+&lt;/button&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">FAB (Floating Action Button)</h3>
+                    <div class="component-description">Floating button for primary action</div>
+                    <div class="component-display">
+                        <div class="fab">
+                            <span class="material-icons">add</span>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="fab"&gt;
+    &lt;span class="material-icons"&gt;add&lt;/span&gt;
+&lt;/div&gt;</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Cards Section -->
+        <section class="library-section">
+            <h2 class="library-subheading">Cards</h2>
+            <div class="component-grid">
+                <div class="component-container">
+                    <h3 class="component-title">Action Card</h3>
+                    <div class="component-description">Primary action card with icon</div>
+                    <div class="component-display">
+                        <div class="action-card">
+                            <div class="action-card-icon">
+                                <span class="material-icons">add_chart</span>
+                            </div>
+                            <div class="action-card-content">
+                                <div class="action-card-title">Health Summary</div>
+                                <div class="action-card-description">View your latest health status</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="action-card"&gt;
+    &lt;div class="action-card-icon"&gt;
+        &lt;span class="material-icons"&gt;add_chart&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="action-card-content"&gt;
+        &lt;div class="action-card-title"&gt;Health Summary&lt;/div&gt;
+        &lt;div class="action-card-description"&gt;View your latest health status&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Category Card</h3>
+                    <div class="component-description">Small clickable category card with icon</div>
+                    <div class="component-display" style="display: flex; gap: 16px;">
+                        <div class="category-card">
+                            <div class="category-icon icon-1">
+                                <span class="material-icons">medication</span>
+                            </div>
+                            <div class="category-name">Prescriptions</div>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon icon-2">
+                                <span class="material-icons">science</span>
+                            </div>
+                            <div class="category-name">Lab Results</div>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="category-card"&gt;
+    &lt;div class="category-icon icon-1"&gt;
+        &lt;span class="material-icons"&gt;medication&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="category-name"&gt;Prescriptions&lt;/div&gt;
+&lt;/div&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Record List Item</h3>
+                    <div class="component-description">List item for displaying record information</div>
+                    <div class="component-display">
+                        <div class="card" style="width: 100%;">
+                            <div class="record-item">
+                                <div class="record-icon icon-1">
+                                    <span class="material-icons">medication</span>
+                                </div>
+                                <div class="record-info">
+                                    <div class="record-title">Amoxicillin</div>
+                                    <div class="record-date">Apr 15, 2025</div>
+                                </div>
+                                <div class="record-value">500mg</div>
+                            </div>
+                            <div class="record-item">
+                                <div class="record-icon icon-2">
+                                    <span class="material-icons">science</span>
+                                </div>
+                                <div class="record-info">
+                                    <div class="record-title">Blood Test</div>
+                                    <div class="record-date">Apr 10, 2025</div>
+                                </div>
+                                <div class="record-value">Normal</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="card"&gt;
+    &lt;div class="record-item"&gt;
+        &lt;div class="record-icon icon-1"&gt;
+            &lt;span class="material-icons"&gt;medication&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="record-info"&gt;
+            &lt;div class="record-title"&gt;Amoxicillin&lt;/div&gt;
+            &lt;div class="record-date"&gt;Apr 15, 2025&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="record-value"&gt;500mg&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Chart Card</h3>
+                    <div class="component-description">Card containing data visualization</div>
+                    <div class="component-display">
+                        <div class="chart-card">
+                            <div class="text-h4" style="margin-bottom: 16px; text-align: center;">Record Types</div>
+                            <div class="chart-container">
+                                <div class="donut-chart"></div>
+                                <div class="donut-hole">
+                                    <div class="donut-total">15</div>
+                                    <div class="donut-label">Records</div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: var(--category-1);"></div>
+                                    <div class="legend-text">Type 1</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: var(--category-2);"></div>
+                                    <div class="legend-text">Type 2</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: var(--category-3);"></div>
+                                    <div class="legend-text">Type 3</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: var(--category-4);"></div>
+                                    <div class="legend-text">Type 4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="chart-card"&gt;
+    &lt;div class="text-h4" style="margin-bottom: 16px; text-align: center;"&gt;Record Types&lt;/div&gt;
+    &lt;div class="chart-container"&gt;
+        &lt;div class="donut-chart"&gt;&lt;/div&gt;
+        &lt;div class="donut-hole"&gt;
+            &lt;div class="donut-total"&gt;15&lt;/div&gt;
+            &lt;div class="donut-label"&gt;Records&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="chart-legend"&gt;
+        &lt;div class="legend-item"&gt;
+            &lt;div class="legend-color" style="background-color: var(--category-1);"&gt;&lt;/div&gt;
+            &lt;div class="legend-text"&gt;Type 1&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- More legend items... --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Navigation Section -->
+        <section class="library-section">
+            <h2 class="library-subheading">Navigation</h2>
+            <div class="component-grid">
+                <div class="component-container">
+                    <h3 class="component-title">Status Bar</h3>
+                    <div class="component-description">Mobile device status bar with time and system icons</div>
+                    <div class="component-display">
+                        <div class="status-bar">
+                            <div>9:41 AM</div>
+                            <div class="status-bar-right">
+                                <span class="material-icons" style="font-size: 14px;">wifi</span>
+                                <span class="material-icons" style="font-size: 14px;">signal_cellular_alt</span>
+                                <span>85%</span>
+                                <span class="material-icons" style="font-size: 14px;">battery_full</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="status-bar"&gt;
+    &lt;div&gt;9:41 AM&lt;/div&gt;
+    &lt;div class="status-bar-right"&gt;
+        &lt;span class="material-icons" style="font-size: 14px;"&gt;wifi&lt;/span&gt;
+        &lt;span class="material-icons" style="font-size: 14px;"&gt;signal_cellular_alt&lt;/span&gt;
+        &lt;span&gt;85%&lt;/span&gt;
+        &lt;span class="material-icons" style="font-size: 14px;"&gt;battery_full&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">App Header</h3>
+                    <div class="component-description">Main app header with back button and avatar</div>
+                    <div class="component-display">
+                        <div class="header">
+                            <div class="back-button">
+                                <span class="material-icons">arrow_back</span>
+                            </div>
+                            <div class="header-title">Medical Records</div>
+                            <div class="avatar">J</div>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="header"&gt;
+    &lt;div class="back-button"&gt;
+        &lt;span class="material-icons"&gt;arrow_back&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="header-title"&gt;Medical Records&lt;/div&gt;
+    &lt;div class="avatar"&gt;J&lt;/div&gt;
+&lt;/div&gt;</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Form Elements Section -->
+        <section class="library-section">
+            <h2 class="library-subheading">Form Elements</h2>
+            <div class="component-grid">
+                <div class="component-container">
+                    <h3 class="component-title">Text Input</h3>
+                    <div class="component-description">Standard text input field with label</div>
+                    <div class="component-display">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="Enter your full name">
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="form-group"&gt;
+    &lt;label class="form-label"&gt;Full Name&lt;/label&gt;
+    &lt;input type="text" class="form-input" placeholder="Enter your full name"&gt;
+&lt;/div&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Select Input</h3>
+                    <div class="component-description">Dropdown select field</div>
+                    <div class="component-display">
+                        <div class="form-group">
+                            <label class="form-label">Record Type</label>
+                            <select class="form-select">
+                                <option>Select a type</option>
+                                <option>Prescription</option>
+                                <option>Lab Result</option>
+                                <option>Vaccination</option>
+                                <option>Imaging</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="form-group"&gt;
+    &lt;label class="form-label"&gt;Record Type&lt;/label&gt;
+    &lt;select class="form-select"&gt;
+        &lt;option&gt;Select a type&lt;/option&gt;
+        &lt;option&gt;Prescription&lt;/option&gt;
+        &lt;option&gt;Lab Result&lt;/option&gt;
+        &lt;option&gt;Vaccination&lt;/option&gt;
+        &lt;option&gt;Imaging&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;</div>
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Checkbox</h3>
+                    <div class="component-description">Standard checkbox with label</div>
+                    <div class="component-display">
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-checkbox">
+                            <label for="privacy-checkbox">I agree to the privacy policy</label>
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="form-checkbox"&gt;
+    &lt;input type="checkbox" id="privacy-checkbox"&gt;
+    &lt;label for="privacy-checkbox"&gt;I agree to the privacy policy&lt;/label&gt;
+&lt;/div&gt;</div>
+                <!-- Search Component Template -->
+                <template id="search-component-template">
+                    <div class="search-bar">
+                        <span class="material-icons search-icon">search</span>
+                        <input type="text" class="search-input" placeholder="Search...">
+                    </div>
+                </template>
+
+
+                </div>
+                
+                <div class="component-container">
+                    <h3 class="component-title">Search Bar</h3>
+                    <div class="component-description">Search input with icon</div>
+                    <div class="component-display">
+                        <div class="search-bar">
+                            <span class="material-icons">search</span>
+                            <input type="text" placeholder="Search records...">
+                        </div>
+                    </div>
+                    <div class="code-block">&lt;div class="search-bar"&gt;
+    &lt;span class="material-icons"&gt;search&lt;/span&gt;
+    &lt;input type="text" placeholder="Search records..."&gt;
+&lt;/div&gt;</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Background Section -->
+        <section class="library-section">
+            <h2 class="library-subheading">Background Elements</h2>
+            <div class="component-container">
+                <h3 class="component-title">Decorative Background Shapes</h3>
+                <div class="component-description">Semi-transparent shapes to add visual interest to backgrounds</div>
+                <div class="component-display">
+                    <div class="bg-demo">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                    </div>
+                </div>
+                <div class="code-block">&lt;!-- Add these shapes as direct children of the body or main container --&gt;
+&lt;div class="shape shape-1"&gt;&lt;/div&gt;
+&lt;div class="shape shape-2"&gt;&lt;/div&gt;</div>
+            </div>
+        </section>
+        
+        <!-- Screen Templates Section -->
+        <section class="library-section">
+            <h2 class="library-subheading">Screen Templates</h2>
+            <div class="component-container">
+                <h3 class="component-title">Home Screen Template</h3>
+                <div class="component-description">Basic structure for a home screen layout</div>
+                <div class="code-block">&lt;!-- Status Bar --&gt;
+&lt;div class="status-bar"&gt;
+    &lt;div&gt;9:41 AM&lt;/div&gt;
+    &lt;div class="status-bar-right"&gt;
+        &lt;span class="material-icons" style="font-size: 14px;"&gt;wifi&lt;/span&gt;
+        &lt;span class="material-icons" style="font-size: 14px;"&gt;signal_cellular_alt&lt;/span&gt;
+        &lt;span&gt;85%&lt;/span&gt;
+        &lt;span class="material-icons" style="font-size: 14px;"&gt;battery_full&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Header --&gt;
+&lt;div class="header"&gt;
+    &lt;div class="back-button"&gt;
+        &lt;span class="material-icons"&gt;menu&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="avatar"&gt;J&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Content --&gt;
+&lt;div class="content"&gt;
+    &lt;!-- Welcome Section --&gt;
+    &lt;div class="welcome"&amp;
+</div></div></section></div></body></html>

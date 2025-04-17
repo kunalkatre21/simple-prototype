@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABHA Health ID</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-bar-right">
+            <i class="material-icons" style="font-size: 18px;">signal_cellular_alt</i>
+            <i class="material-icons" style="font-size: 18px;">wifi</i>
+            <i class="material-icons" style="font-size: 18px;">battery_full</i>
+        </div>
+    </div>
+
+    <!-- App Header -->
+    <header class="header">
+        <a href="index.html" class="back-button">
+            <i class="material-icons">arrow_back</i>
+        </a>
+        <span class="header-title">ABHA Health ID</span>
+        <div class="avatar">J</div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main style="padding: 16px;">
+
+        <!-- ABHA ID Card -->
+        <div class="card">
+            <h2 class="text-h4" style="margin-bottom: 8px; text-align: center;">Your ABHA Number</h2>
+            <p class="text-h3" style="margin-bottom: 16px; text-align: center; color: var(--primary-color);">12-3456-7890-1234</p>
+
+            <!-- QR Code Placeholder -->
+            <img src="https://via.placeholder.com/150?text=ABHA+QR+Code" alt="ABHA QR Code" style="display: block; margin: 24px auto; border-radius: var(--radius-md);">
+            <!-- Alternative text placeholder: -->
+            <!-- <div style="text-align: center; margin: 24px 0; padding: 40px; background-color: #eee; border-radius: var(--radius-md); color: var(--text-secondary);">[QR Code Placeholder]</div> -->
+
+            <p class="text-body-sm" style="margin-bottom: 24px; text-align: center; color: var(--text-secondary);">
+                Share your unique ABHA ID securely with healthcare providers.
+            </p>
+
+            <button class="btn btn-primary btn-full-width">
+                <i class="material-icons">download</i>
+                Download ABHA Card
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>
