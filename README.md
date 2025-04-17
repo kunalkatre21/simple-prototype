@@ -1,6 +1,6 @@
 # Simple Health Records Prototype
 
-A basic front-end prototype demonstrating various views for a health records application, built purely with vanilla HTML, CSS, and JavaScript.
+Its a functional, "dirty" prototype of a fully replicated application using the provided component library. This project targets both UX designers and coders. The goal is to demonstrate ideal user interactions within the replicated application while new features keep adding. Its an attempt to enhance the Handoff process to developers.
 
 ## Pages
 
